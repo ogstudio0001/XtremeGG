@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Tournament</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">Free Fire Tournament</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tournament">Tournament</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admin-panel.html">Admin Panel</a></li>
+                <li><button onclick="showLogin()">Sign In</button></li>
+                <li><button onclick="showSignup()">Sign Up</button></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="banner">
+        <div class="banner-content">
+            <h1>Welcome to the Ultimate Free Fire Tournament</h1>
+            <p>Compete with the best and win amazing rewards!</p>
+            <a href="https://ff.garena.com/" class="btn">Play Free Fire</a>
+        </div>
+    </section>
+    
+    <section id="tournament" class="tournament">
+        <h2>Upcoming Tournament</h2>
+        <img src="freefire-banner.jpg" alt="Free Fire Tournament" class="tournament-img">
+        <p>Join the Free Fire battle and prove your skills!</p>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Email:business.ogstudio@gmail.com</p>
+        <p>Phone: +880 1784-263501</p>
+    </section>
+    
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2>Sign In</h2>
+            <input type="text" id="login-username" placeholder="Username">
+            <input type="password" id="login-password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <h2>Sign Up</h2>
+            <input type="text" id="signup-username" placeholder="Username">
+            <input type="password" id="signup-password" placeholder="Password">
+            <button onclick="signup()">Register</button>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Enjoy and experience the new horizon.</p>
+    </footer>
+    
+    <script>
+        function showLogin() {
+            document.getElementById("login-modal").style.display = "block";
+        }
+
+        function showSignup() {
+            document.getElementById("signup-modal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("login-modal").style.display = "none";
+            document.getElementById("signup-modal").style.display = "none";
+        }
+
+        function signup() {
+            let username = document.getElementById("signup-username").value;
+            let password = document.getElementById("signup-password").value;
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push({ username, password, isAdmin: false, requestedAdmin: false });
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Sign Up Successful!");
+            closeModal();
+        }
+
+        function login() {
+            let username = document.getElementById("login-username").value;
+            let password = document.getElementById("login-password").value;
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let user = users.find(u => u.username === username && u.password === password);
+            if (user) {
+                localStorage.setItem("loggedInUser", JSON.stringify(user));
+                alert("Login Successful!");
+                window.location.href = "admin-panel.html";
+            } else {
+                alert("Invalid Credentials");
+            }
+        }
+    </script>
+</body>
+</html>

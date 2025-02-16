@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+}
+
+header {
+    background: #ff4500;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.title {
+    font-size: 2em;
+    margin: 0;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background: #222;
+}
+
+nav ul li {
+    margin: 10px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    background: #ff4500;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background: #ff2200;
+}
+
+.banner {
+    padding: 50px 20px;
+    background: url('freefire-banner.jpg') center/cover;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff4500;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff2200;
+}
+
+section {
+    padding: 40px 20px;
+}
+
+footer {
+    background: #222;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
